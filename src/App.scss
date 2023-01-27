@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Mulish", "sans-serif";
+  color: white;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+.navbar-colorMode {
+  background-color: #35394A !important;
+}
+.hero-colorMode{
+  background-color: #282D3F !important;
+}
+.topCourses-colorMode{
+  background-color: #35394A !important;
+}

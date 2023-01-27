@@ -1,0 +1,29 @@
+$navbar_bg_dark: #000;
+.logo {
+  height: 46px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.navbar {
+  background-color: $navbar_bg_dark;
+}
+
+.navbar-nav {
+  align-items: center;
+  gap: 10px;
+  > button {
+    margin: 0 1rem;
+  }
+  > a {
+    font-size: 1.2rem;
+    color: white;
+    > svg {
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+  }
+  > svg {
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+}

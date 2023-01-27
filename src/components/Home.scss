@@ -1,0 +1,128 @@
+$bg: rgba(16, 16, 16);
+
+.hero {
+  height: 90vh;
+  display: flex;
+  background-color: #a261fc;
+  box-sizing: border-box;
+  > div {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 4rem;
+    > div {
+      > button {
+        > a {
+          text-decoration: none;
+          color: $bg;
+        }
+        background-color: #f1f169;
+        padding: 0.8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        color: $bg;
+        border-radius: 5px;
+        margin: 10px;
+        transition: 0.5s;
+        cursor: pointer;
+        &:hover {
+          transform: translateY(-10px);
+          background-color: rgb(248, 248, 32);
+        }
+      }
+    }
+    > span {
+      font-size: 3rem;
+      width: auto;
+      color: #101010;
+      font-weight: bolder;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  > img {
+    width: 44%;
+    padding: 4rem;
+    box-sizing: border-box;
+    margin: auto;
+    border-radius: 30% 70% 56% 44% / 30% 30% 70% 70%;
+    background-color: #101010;
+  }
+}
+
+.topCourses {
+  z-index: 1;
+  position: relative;
+  height: 600px;
+  background-color: #9246fc;
+
+  > svg {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+  }
+  > h1 {
+    padding: 1rem;
+    color: #ffdf2b;
+  }
+  > div {
+    height: 60%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+  }
+}
+
+.youtube {
+  height: 100vh;
+  background-color: #a261fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > iframe {
+    height: 80%;
+    width: 80%;
+  }
+}
+.topReviews {
+  > h1 {
+    padding: 1rem;
+    color: #ffdf2b;
+  }
+  background-color: #a261fc;
+  min-height: 80vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  > div {
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .hero {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    > div {
+      width: 80%;
+      padding: 1.2rem;
+    }
+    > img {
+      width: 100%;
+    }
+  }
+  .topCourses {
+    height: auto;
+  }
+}
