@@ -27,6 +27,11 @@
     }
   }
 }
+.card-subtitle{
+  >svg{
+    fill: rgb(248, 248, 32);
+  }
+}
 .addReview {
   display: flex;
   margin: auto;
@@ -55,7 +60,17 @@
     padding: 1rem;
   }
 }
-
+.on {
+  > svg {
+    fill: rgb(248, 248, 32);
+    cursor: pointer;
+  }
+}
+.off {
+  > svg {
+    fill: #ccc;
+  }
+}
 @media screen and (max-width: 930px) {
   .addReview {
     textarea {

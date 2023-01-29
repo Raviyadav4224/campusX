@@ -11,6 +11,7 @@ import {
   getCourseReviews,
 } from "../redux/actions/actions";
 import Reviews from "./Reviews";
+import { BsStar } from "react-icons/bs";
 const CourseDetail = ({
   isAuthenticated,
   lectures,
@@ -20,9 +21,12 @@ const CourseDetail = ({
 }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
   const addReview = async () => {
-    await dispatch(createCourseReview(id, comment, 5));
+    await dispatch(createCourseReview(id, comment, rating));
     setComment("");
+    setRating(0)
     await dispatch(getCourseReviews(id));
   };
   const deleteReview = async () => {
@@ -57,8 +61,28 @@ const CourseDetail = ({
                 cols="50"
                 rows="5"
                 onChange={(e) => setComment(e.target.value)}
+                placeholder="Enter your review"
               />
-              <button onClick={addReview}>Add Review</button>
+              {[...Array(5)].map((star, index) => {
+                index+=1
+                return (
+                  <>
+                    <span
+                      key={index}
+                      className={index <= (hover || rating) ? "on" : "off"}
+                      onClick={() => setRating(index)}
+                      onMouseEnter={() => setHover(index)}
+                      onMouseLeave={() => setHover(rating)}
+                    >
+                      <BsStar />
+                    </span>
+                  </>
+                );
+              })}
+
+              <button className="" onClick={addReview}>
+                Add Review
+              </button>
             </div>
             <h2>Reviews</h2>
             <div className="reviewsList">

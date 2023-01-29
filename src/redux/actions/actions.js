@@ -37,13 +37,9 @@ const url = "http://localhost:3000/campusX/v1";
 export const registerUser = (myForm) => async (dispatch) => {
   try {
     dispatch({ type: "registerRequest" });
-    const { data } = await axios.post(
-      `${url}/register`,
-      myForm,
-      {
-        withCredentials: true,
-      }
-    );
+    const { data } = await axios.post(`${url}/register`, myForm, {
+      withCredentials: true,
+    });
     dispatch({ type: "registerSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "registerFail", payload: error.response.data.message });
@@ -179,12 +175,17 @@ export const getCourseReviews = (id) => async (dispatch) => {
   }
 };
 
-export const createCourseReview=(id,comment,rating)=>async(dispatch)=>{
+export const createCourseReview = (id, comment, rating) => async (dispatch) => {
   try {
+    if (rating === undefined) rating = 5;
     dispatch({ type: "createCourseReviewRequest" });
-    const { data } = await axios.post(`${url}/courseReviews/${id}`,{comment,rating}, {
-      withCredentials: true,
-    });
+    const { data } = await axios.post(
+      `${url}/courseReviews/${id}`,
+      { comment, rating },
+      {
+        withCredentials: true,
+      }
+    );
     dispatch({ type: "createCourseReviewSuccess", payload: data });
   } catch (error) {
     dispatch({
@@ -192,9 +193,9 @@ export const createCourseReview=(id,comment,rating)=>async(dispatch)=>{
       payload: error.response.data.message,
     });
   }
-}
+};
 
-export const deleteCourseReview=(id)=>async(dispatch)=>{
+export const deleteCourseReview = (id) => async (dispatch) => {
   try {
     dispatch({ type: "deleteCourseReviewRequest" });
     const { data } = await axios.delete(`${url}/courseReviews/${id}`, {
@@ -207,4 +208,4 @@ export const deleteCourseReview=(id)=>async(dispatch)=>{
       payload: error.response.data.message,
     });
   }
-}
+};
