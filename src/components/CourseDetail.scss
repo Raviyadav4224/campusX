@@ -56,7 +56,10 @@
     }
   }
 }
-
+.totalRating{
+  padding: 1rem;
+  font-size: 2rem;
+}
 @media screen and (max-width: 930px){
 .lectures{
   flex-direction: column;

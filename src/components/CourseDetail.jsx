@@ -55,13 +55,16 @@ const CourseDetail = ({
             isDarkMode={isDarkMode}
           />
           <div className={`reviews ${isDarkMode ? "hero-colorMode" : ""}`}>
+            <div className="totalRating">
+              Ratings {rating}
+            </div>
             <div className="addReview">
               <textarea
                 value={comment}
                 cols="50"
                 rows="5"
                 onChange={(e) => setComment(e.target.value)}
-                placeholder="Enter your review"
+                placeholder="Leave your review"
               />
               {[...Array(5)].map((star, index) => {
                 index+=1

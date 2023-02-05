@@ -14,7 +14,6 @@ const CustomModal = ({ onHide, show,loading }) => {
     <>
       <Modal show={show} onHide={onHide} centered>
         <Modal.Header closeButton>
-          <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {form === "login" ? (

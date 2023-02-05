@@ -59,8 +59,8 @@ const Login = ({ toggleForm, loading }) => {
         <button>
           {loading ? (
             <TailSpin
-              height="30"
-              width="30"
+              height="25"
+              width="25"
               color="white"
               ariaLabel="tail-spin-loading"
               radius="1"

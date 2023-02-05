@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import "./Card.scss";
+import { FaStarHalfAlt } from "react-icons/fa";
+import { FiStar } from "react-icons/fi";
 const Cards = ({
   toggleModal,
   isAuthenticated,
@@ -12,6 +14,7 @@ const Cards = ({
   description,
   createdBy,
   views,
+  ratings,
 }) => {
   const navigate = useNavigate();
 
@@ -31,7 +34,10 @@ const Cards = ({
       <Card style={{ width: "16rem" }} bg="dark" onClick={handleCourseDetails}>
         <Card.Img sizes="sm" variant="top" src={img} />
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title>
+            {title}
+            {ratings % 1 ==0? <FiStar /> : <FaStarHalfAlt />}
+          </Card.Title>
           <Card.Text>{description}</Card.Text>
           <Card.Text>₹ {price}</Card.Text>
         </Card.Body>

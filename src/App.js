@@ -107,7 +107,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/me" element={<Profile user={user} isDarkMode={isDarkMode} />} />
+          <Route path="/me" element={<Profile user={user} isDarkMode={isDarkMode} courses={courses} loading={loading}/>} />
           <Route path="/rough" element={<Rough />} />
         </Routes>
         <Toaster

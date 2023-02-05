@@ -1,0 +1,49 @@
+.actionOnCourses {
+  margin: auto;
+  min-height: 50vh;
+  height: auto;
+  > div {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    > button {
+      padding: 0.6rem;
+      outline: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      background-color: rgb(49, 49, 49);
+      transition: 0.5s;
+      border: none;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background-color: #e50914;
+        transform: scale(1.15);
+      }
+    }
+  }
+  .listOfActiveCourses {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    > h1 {
+      font-weight: bolder;
+      color: #ffdf2b;
+    }
+  }
+}
+
+.h4 {
+  color: black;
+}
+#error {
+  color: red ;
+  padding: 0 8px ;
+  text-align: start;
+}
+
+.btnCreateOrRemoveCourse{
+  padding: 2rem;
+}

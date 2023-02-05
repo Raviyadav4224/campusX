@@ -61,6 +61,7 @@ const Courses = ({ toggleModal, isAuthenticated ,isDarkMode}) => {
                     numOfLectures={e.numOfVideos}
                     views={e.views}
                     price={e.price}
+                    ratings={e.ratings}
                   />
                 </>
               );
