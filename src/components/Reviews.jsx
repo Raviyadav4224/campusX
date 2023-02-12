@@ -11,8 +11,8 @@ const Reviews = ({ title, rating, comment, deleteReview }) => {
           {title} <TiDeleteOutline onClick={deleteReview} />
         </Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          {[...Array(rating)].map((star) => {
-            return <BsStar />;
+          {[...Array(rating)].map((star,index) => {
+            return <BsStar key={index}/>;
           })}
         </Card.Subtitle>
         <Card.Text>{comment}</Card.Text>

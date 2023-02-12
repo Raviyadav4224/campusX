@@ -16,7 +16,7 @@ const Lectures = ({ loading, lectures ,isDarkMode }) => {
             <h1>No Lectures Available</h1>
           ) : (
             <>
-              <div className="video">
+              <div className="video" key={index}>
                 <video src={lectures[index].video.url} controls></video>
                 <h1>{lectures[index].title}</h1>
                 <p>{lectures[index].description}</p>

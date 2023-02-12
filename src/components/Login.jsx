@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/actions/actions";
 import { TailSpin } from "react-loader-spinner";
 
-const Login = ({ toggleForm, loading }) => {
+const Login = ({ toggleForm, loading,onHide }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
@@ -15,10 +15,11 @@ const Login = ({ toggleForm, loading }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = ({ CustomModal }) => {
+  const onSubmit =async ({ CustomModal }) => {
     let email = CustomModal.email;
     let password = CustomModal.password;
-    dispatch(loginUser(email, password));
+    await dispatch(loginUser(email, password));
+    onHide()
   };
   return (
     <>
@@ -29,10 +30,13 @@ const Login = ({ toggleForm, loading }) => {
           id="email"
           name="email"
           placeholder="Email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          {...register("CustomModal.email", { required: true })}
+          value={email}
+          {...register("CustomModal.email", {
+            required: true,
+            onChange: (e) => {
+              setEmail(e.target.value);
+            },
+          })}
         />
         {errors?.CustomModal?.email ? (
           <p className="error">Email is must</p>
@@ -44,9 +48,10 @@ const Login = ({ toggleForm, loading }) => {
           id="password"
           name="password"
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
+          value={password}
           {...register("CustomModal.password", {
             required: true,
+            onChange: (e) => setPassword(e.target.value),
             minLength: 8,
             maxLength: 8,
           })}
@@ -59,18 +64,17 @@ const Login = ({ toggleForm, loading }) => {
         <button>
           {loading ? (
             <TailSpin
-              height="25"
-              width="25"
+              height="24"
+              width="24"
               color="white"
               ariaLabel="tail-spin-loading"
               radius="1"
               wrapperStyle={{}}
               wrapperClass=""
               visible={true}
-              
             />
           ) : (
-            'Login'
+            "Login"
           )}
         </button>
         <span>or</span>

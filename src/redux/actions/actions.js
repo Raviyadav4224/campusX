@@ -93,7 +93,34 @@ export const createCourse = (myForm) => async (dispatch) => {
     });
   }
 };
-
+export const addLectures = (id, myForm) => async (dispatch) => {
+  try {
+    dispatch({ type: "addLecturesRequest" });
+    const { data } = await axios.post(`${url}/course/${id}`, myForm, {
+      withCredentials: true,
+    });
+    dispatch({ type: "addLecturesSuccess", payload: data });
+  } catch (error) {
+    dispatch({
+      type: "addLecturesFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+export const deleteLectures = (courseId, lectureId) => async (dispatch) => {
+  try {
+    dispatch({ type: "deleteLectureRequest" });
+    const { data } = await axios.delete(`${url}/lecture?courseId=${courseId}&lectureId=${lectureId}`, {
+      withCredentials: true,
+    });
+    dispatch({ type: "deleteLectureSuccess", payload: data });
+  } catch (error) {
+    dispatch({
+      type: "deleteLectureFail",
+      payload: error.response.data.message,
+    });
+  }
+};
 export const getAllLectures = (id) => async (dispatch) => {
   try {
     dispatch({ type: "getAllLecturesRequest" });

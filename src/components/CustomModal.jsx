@@ -18,11 +18,11 @@ const CustomModal = ({ onHide, show,loading }) => {
         <Modal.Body>
           {form === "login" ? (
             <>
-              <Login toggleForm={toggleForm} loading={loading}/>
+              <Login toggleForm={toggleForm} loading={loading} onHide={onHide}/>
             </>
           ) : (
             <>
-              <Register toggleForm={toggleForm} loading={loading}/>
+              <Register toggleForm={toggleForm} loading={loading} onHide={onHide}/>
             </>
           )}
         </Modal.Body>

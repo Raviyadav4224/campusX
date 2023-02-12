@@ -16,8 +16,6 @@ const Header = ({
 }) => {
   const handleShow = () => toggleModal();
   const navigate = useNavigate();
-  // const [isDarkMode, setDarkMode] = useState(false);
-
   return (
     <>
       <Navbar

@@ -5,14 +5,14 @@ import { useDispatch } from "react-redux";
 import { registerUser } from "../redux/actions/actions";
 import { TailSpin } from "react-loader-spinner";
 
-const Register = ({ toggleForm,loading }) => {
+const Register = ({ toggleForm, loading, onHide }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [file, setFile] = useState("");
   const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(file);
     const myForm = new FormData();
@@ -20,7 +20,8 @@ const Register = ({ toggleForm,loading }) => {
     myForm.append("name", name);
     myForm.append("password", password);
     myForm.append("file", file);
-    dispatch(registerUser(myForm));
+    await dispatch(registerUser(myForm));
+    onHide();
   };
   return (
     <>
@@ -43,14 +44,14 @@ const Register = ({ toggleForm,loading }) => {
           placeholder="Password"
         />
         <div className="profilePic">
-          <label >Profile picture</label>
-          <input type="file"  onChange={(e) => setFile(e.target.files[0])} />
+          <label>Profile picture</label>
+          <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         </div>
         <button>
           {loading ? (
             <TailSpin
-              height="25"
-              width="25"
+              height="24"
+              width="24"
               color="white"
               ariaLabel="tail-spin-loading"
               radius="1"

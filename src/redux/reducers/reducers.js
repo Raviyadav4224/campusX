@@ -98,7 +98,7 @@ export const userReducer = createReducer(
     },
     deleteUserSuccess: (state, action) => {
       state.loading = false;
-      state.message=action.payload.message
+      state.message = action.payload.message;
     },
     deleteUserFail: (state, action) => {
       state.loading = false;
@@ -109,9 +109,20 @@ export const userReducer = createReducer(
     },
     deleteCourseSuccess: (state, action) => {
       state.loading = false;
-      state.message=action.payload.message
+      state.message = action.payload.message;
     },
     deleteCourseFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    deleteLectureRequest: (state) => {
+      state.loading = true;
+    },
+    deleteLectureSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload.message;
+    },
+    deleteLectureFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -120,9 +131,20 @@ export const userReducer = createReducer(
     },
     createCourseSuccess: (state, action) => {
       state.loading = false;
-      state.message = action.payload.courses.message;
+      state.message = action.payload.message;
     },
     createCourseFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    addLecturesRequest: (state) => {
+      state.loading = true;
+    },
+    addLecturesSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload.message;
+    },
+    addLecturesFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -131,8 +153,8 @@ export const userReducer = createReducer(
     },
     courseReviewSuccess: (state, action) => {
       state.loading = false;
-      state.message=action.payload.message;
-      state.reviews=action.payload.reviews;
+      state.message = action.payload.message;
+      state.reviews = action.payload.reviews;
     },
     courseReviewFail: (state, action) => {
       state.loading = false;
@@ -143,7 +165,7 @@ export const userReducer = createReducer(
     },
     createCourseReviewSuccess: (state, action) => {
       state.loading = false;
-      state.message=action.payload.message;
+      state.message = action.payload.message;
     },
     createCourseReviewFail: (state, action) => {
       state.loading = false;
@@ -154,7 +176,7 @@ export const userReducer = createReducer(
     },
     deleteCourseReviewSuccess: (state, action) => {
       state.loading = false;
-      state.message=action.payload.message;
+      state.message = action.payload.message;
     },
     deleteCourseReviewFail: (state, action) => {
       state.loading = false;
