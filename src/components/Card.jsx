@@ -36,7 +36,7 @@ const Cards = ({
         <Card.Body>
           <Card.Title>
             {title}
-            {ratings % 1 ==0? <FiStar /> : <FaStarHalfAlt />}
+            {ratings % 1 === 0 ? <FiStar /> : <FaStarHalfAlt />}
           </Card.Title>
           <Card.Text>{description}</Card.Text>
           <Card.Text>₹ {price}</Card.Text>

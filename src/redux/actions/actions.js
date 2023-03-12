@@ -110,9 +110,12 @@ export const addLectures = (id, myForm) => async (dispatch) => {
 export const deleteLectures = (courseId, lectureId) => async (dispatch) => {
   try {
     dispatch({ type: "deleteLectureRequest" });
-    const { data } = await axios.delete(`${url}/lecture?courseId=${courseId}&lectureId=${lectureId}`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.delete(
+      `${url}/lecture?courseId=${courseId}&lectureId=${lectureId}`,
+      {
+        withCredentials: true,
+      }
+    );
     dispatch({ type: "deleteLectureSuccess", payload: data });
   } catch (error) {
     dispatch({
@@ -232,6 +235,21 @@ export const deleteCourseReview = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "deleteCourseReviewFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const getCourseDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: "getCourseDetailsRequest" });
+    const { data } = await axios.get(`${url}/courseDetails/${id}`, {
+      withCredentials: true,
+    });
+    dispatch({ type: "getCourseDetailsSuccess", payload: data });
+  } catch (error) {
+    dispatch({
+      type: "getCourseDetailsFail",
       payload: error.response.data.message,
     });
   }

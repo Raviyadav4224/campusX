@@ -182,6 +182,17 @@ export const userReducer = createReducer(
       state.loading = false;
       state.error = action.payload;
     },
+    getCourseDetailsRequest: (state) => {
+      state.loading = true;
+    },
+    getCourseDetailsSuccess: (state, action) => {
+      state.loading = false;
+      state.courseInfo = action.payload.courseDetail;
+    },
+    getCourseDetailsFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
     clearMessage: (state) => {
       state.message = null;
     },

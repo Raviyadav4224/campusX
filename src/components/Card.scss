@@ -76,3 +76,9 @@ $bg: rgba(16, 16, 16);
   border-top-right-radius: 8px;
   width: 100%;
 }
+
+.card-title{
+  >svg{
+    fill: rgb(248, 248, 32);
+  }
+}

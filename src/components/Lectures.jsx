@@ -12,7 +12,6 @@ const Lectures = ({ loading, lectures ,isDarkMode }) => {
       {!loading ? (
         <div className={`lectures ${isDarkMode?'hero-colorMode':''}`}>
           {lectures === undefined || lectures.length === 0 ? (
-            // <h1>Please buy our subscription at just 799 per month</h1>
             <h1>No Lectures Available</h1>
           ) : (
             <>

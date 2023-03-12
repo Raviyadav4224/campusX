@@ -20,8 +20,17 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 // import { loadUser } from "./redux/actions/actions";
 
 const App = () => {
-  const { isAuthenticated, error, message, courses, lectures,reviews, loading ,user} =
-    useSelector((state) => state.user);
+  const {
+    isAuthenticated,
+    error,
+    message,
+    courses,
+    lectures,
+    courseInfo,
+    reviews,
+    loading,
+    user,
+  } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [isDarkMode, setDarkMode] = useState(true);
@@ -100,14 +109,26 @@ const App = () => {
               <CourseDetail
                 loading={loading}
                 isAuthenticated={isAuthenticated}
+                user={user}
                 lectures={lectures}
+                courseInfo={courseInfo}
                 reviews={reviews}
                 toggleModal={toggleModal}
                 isDarkMode={isDarkMode}
               />
             }
           />
-          <Route path="/me" element={<Profile user={user} isDarkMode={isDarkMode} courses={courses} loading={loading}/>} />
+          <Route
+            path="/me"
+            element={
+              <Profile
+                user={user}
+                isDarkMode={isDarkMode}
+                courses={courses}
+                loading={loading}
+              />
+            }
+          />
           <Route path="/rough" element={<Rough />} />
         </Routes>
         <Toaster
