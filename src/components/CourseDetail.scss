@@ -14,7 +14,8 @@
       color: chartreuse;
     }
   }
-}.lectures {
+}
+.lectures {
   margin: auto;
   min-height: 80vh;
   height: auto;
@@ -59,6 +60,13 @@
 .totalRating{
   padding: 1rem;
   font-size: 2rem;
+}
+.reviewsList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 @media screen and (max-width: 930px){
 .lectures{

@@ -1,7 +1,7 @@
 import "./CourseDetail.scss";
 import { useDispatch } from "react-redux";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Lectures from "./Lectures";
 import {
@@ -16,6 +16,7 @@ import { BsStar } from "react-icons/bs";
 import Subscribe from "./Subscribe";
 import { useSelector } from "react-redux";
 import { TailSpin } from "react-loader-spinner";
+
 const CourseDetail = ({
   isAuthenticated,
   lectures,
@@ -29,13 +30,13 @@ const CourseDetail = ({
   const dispatch = useDispatch();
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const navigate=useNavigate()
   const addReview = async () => {
     await dispatch(createCourseReview(id, comment, rating));
     setComment("");
     setRating(0);
     await dispatch(getCourseReviews(id));
   };
-  console.log(courseInfo);
   const deleteReview = async () => {
     await dispatch(deleteCourseReview(id));
     await dispatch(getCourseReviews(id));
@@ -74,11 +75,14 @@ const CourseDetail = ({
                 <div>
                   <span>{courseInfo.title}</span>
                   <p>{courseInfo.description}</p>
-                  <div>
-                    <button>
-                      <a href="">Subscribe Now</a>
-                    </button>
-                  </div>
+                  {user.subscription.status === "active" ||
+                  user.role === "admin" ? null : (
+                    <div>
+                      <button>
+                        <span onClick={()=>navigate('/payment')}>Subscribe Now</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <img
                   src={courseInfo.poster.url}
@@ -111,7 +115,7 @@ const CourseDetail = ({
                         cols="50"
                         rows="5"
                         onChange={(e) => setComment(e.target.value)}
-                        placeholder="Leave your review"
+                        placeholder="Leave your review..."
                       />
                       {[...Array(5)].map((star, index) => {
                         index += 1;
@@ -131,10 +135,10 @@ const CourseDetail = ({
                           </>
                         );
                       })}
+                      <button className="" onClick={addReview}>
+                        Add Review
+                      </button>
                     </div>
-                    <button className="" onClick={addReview}>
-                      Add Review
-                    </button>
                   </div>
                   <h2>Reviews</h2>
                   <div className="reviewsList">

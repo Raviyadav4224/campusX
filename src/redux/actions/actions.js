@@ -1,5 +1,6 @@
 import axios from "axios";
-const url = "http://localhost:3000/campusX/v1";
+export const url = "http://localhost:3000/campusX/v1";
+console.log(url)
 // export const loadUser = () => async (dispatch) => {
 //   try {
 //     dispatch({
@@ -250,6 +251,21 @@ export const getCourseDetails = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "getCourseDetailsFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const buySubscription = () => async (dispatch) => {
+  try {
+    dispatch({ type: "buySubscriptionRequest" });
+    const { data } = await axios.get(`${url}/subscribe`, {
+      withCredentials: true,
+    });
+    dispatch({ type: "buySubscriptionSuccess", payload: data });
+  } catch (error) {
+    dispatch({
+      type: "buySubscriptionFail",
       payload: error.response.data.message,
     });
   }

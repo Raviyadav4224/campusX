@@ -201,3 +201,18 @@ export const userReducer = createReducer(
     },
   }
 );
+
+export const subscribeReducer = createReducer(
+  {},
+  {
+    buySubscriptionRequest: (state) => {
+      state.loading = true;
+    },
+    buySubscriptionSuccess: (state, action) => {
+      state.loading = false;
+    },
+    buySubscriptionFail: (state) => {
+      state.loading = false;
+    },
+  }
+);

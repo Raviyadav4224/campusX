@@ -17,6 +17,7 @@ import Rough from "./components/Rough";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Refundpolicy from "./components/Refundpolicy";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import Payment from "./components/Payment";
 // import { loadUser } from "./redux/actions/actions";
 
 const App = () => {
@@ -130,6 +131,16 @@ const App = () => {
             }
           />
           <Route path="/rough" element={<Rough />} />
+          <Route
+            path="/payment"
+            element={
+              <Payment
+                user={user}
+                isDarkMode={isDarkMode}
+                courseInfo={courseInfo}
+              />
+            }
+          />
         </Routes>
         <Toaster
           toastOptions={{

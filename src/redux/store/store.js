@@ -1,9 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit'
-import { userReducer } from '../reducers/reducers'
+import { subscribeReducer, userReducer } from '../reducers/reducers'
 
 const store=configureStore({
     reducer:{
-        user:userReducer
+        user:userReducer,
+        subscribe:subscribeReducer
     }
 })
 
