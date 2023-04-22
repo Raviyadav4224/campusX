@@ -13,8 +13,6 @@ import {
 } from "../redux/actions/actions";
 import Reviews from "./Reviews";
 import { BsStar } from "react-icons/bs";
-import Subscribe from "./Subscribe";
-import { useSelector } from "react-redux";
 import { TailSpin } from "react-loader-spinner";
 
 const CourseDetail = ({
@@ -79,7 +77,7 @@ const CourseDetail = ({
                   user.role === "admin" ? null : (
                     <div>
                       <button>
-                        <span onClick={()=>navigate('/payment')}>Subscribe Now</span>
+                        <span onClick={()=>navigate('/subscribe')}>Subscribe Now</span>
                       </button>
                     </div>
                   )}

@@ -17,7 +17,10 @@ import Rough from "./components/Rough";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Refundpolicy from "./components/Refundpolicy";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import Payment from "./components/Payment";
+import Subscribe from "./components/Subscribe";
+import PaymentFail from "./components/PaymentFail";
+import PaymentSuccess from "./components/PaymentSuccess";
+import { loadUser } from "./redux/actions/actions";
 // import { loadUser } from "./redux/actions/actions";
 
 const App = () => {
@@ -52,6 +55,9 @@ const App = () => {
       dispatch({ type: "clearMessage" });
     }
   }, [dispatch, error, message]);
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
   return (
     <>
       <BrowserRouter>
@@ -132,14 +138,22 @@ const App = () => {
           />
           <Route path="/rough" element={<Rough />} />
           <Route
-            path="/payment"
+            path="/subscribe"
             element={
-              <Payment
+              <Subscribe
                 user={user}
                 isDarkMode={isDarkMode}
                 courseInfo={courseInfo}
               />
             }
+          />
+          <Route
+            path="/paymentFail"
+            element={<PaymentFail isDarkMode={isDarkMode} />}
+          />
+          <Route
+            path="paymentSuccess"
+            element={<PaymentSuccess isDarkMode={isDarkMode} />}
           />
         </Routes>
         <Toaster

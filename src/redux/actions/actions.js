@@ -1,22 +1,19 @@
 import axios from "axios";
 export const url = "http://localhost:3000/campusX/v1";
-console.log(url)
-// export const loadUser = () => async (dispatch) => {
-//   try {
-//     dispatch({
-//       type: "loadUserRequest",
-//     });
-//     const { data } = await axios.get(
-//       `http://localhost:3000/auth/login/success`,
-//       {
-//         withCredentials: true,
-//       }
-//     );
-//     dispatch({ type: "loadUserSuccess", payload: data });
-//   } catch (error) {
-//     dispatch({ type: "loadUserFail", payload: error.response.data.message });
-//   }
-// };
+console.log(url);
+export const loadUser = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: "loadUserRequest",
+    });
+    const { data } = await axios.get(`${url}/me`, {
+      withCredentials: true,
+    });
+    dispatch({ type: "loadUserSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "loadUserFail", payload: error.response.data.message });
+  }
+};
 
 // export const getGoogleUser = () => async (dispatch) => {
 //   try {
@@ -256,7 +253,7 @@ export const getCourseDetails = (id) => async (dispatch) => {
   }
 };
 
-export const buySubscription = () => async (dispatch) => {
+export const buySubscriptionPlan = () => async (dispatch) => {
   try {
     dispatch({ type: "buySubscriptionRequest" });
     const { data } = await axios.get(`${url}/subscribe`, {

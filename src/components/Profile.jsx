@@ -1,21 +1,24 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../redux/actions/actions";
+import { loadUser, logout } from "../redux/actions/actions";
 import Admin from "./Admin";
 import "./Profile.scss";
-const Profile = ({ isDarkMode, user, courses, loading }) => {
+const Profile = ({ isDarkMode, courses, loading }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
   };
+  const { user } = useSelector((state) => state.user);
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
   return (
     <>
       {user && (

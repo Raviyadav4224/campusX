@@ -210,9 +210,18 @@ export const subscribeReducer = createReducer(
     },
     buySubscriptionSuccess: (state, action) => {
       state.loading = false;
+      state.subscriptionId=action.payload.subscriptionId
+      state.message=action.payload.message
     },
-    buySubscriptionFail: (state) => {
+    buySubscriptionFail: (state,action) => {
       state.loading = false;
+      state.error=action.payload
+    },
+    clearMessage: (state) => {
+      state.message = null;
+    },
+    clearError: (state) => {
+      state.error = null;
     },
   }
 );

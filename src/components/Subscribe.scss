@@ -34,9 +34,8 @@ $bg: rgba(16, 16, 16);
     }
   }
   > button {
-    > span {
-      text-decoration: none;
-      color: $bg;
+    >div{
+      justify-content: center;
     }
     background-color: #f1f169;
     padding: 0.8rem;
